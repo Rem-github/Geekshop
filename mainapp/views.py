@@ -6,7 +6,7 @@ def index(request):
     context = {
         'title': 'geekshop',
     }
-    return render(request, 'index.html', context)
+    return render(request, 'mainapp/index.html', context)
 
 def products(request):
     context = {
@@ -20,4 +20,4 @@ def products(request):
             {'name': 'Темно-синие широкие строгие брюки ASOS DESIGN', 'about': 'Легкая эластичная ткань сирсакер Фактурная ткань.', 'photo': '/static/vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png', 'price': 2890},
         ]
     }
-    return render(request, 'products.html', context)
+    return render(request, 'mainapp/products.html', context)
