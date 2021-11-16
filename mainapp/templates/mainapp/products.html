@@ -1,8 +1,9 @@
 {% extends 'mainapp/base.html' %}
+{% load static %}
 
 {% block css %}
     <!-- Custom styles for this template -->
-    <link href="/static/css/products.css" rel="stylesheet">
+    <link href="{% static 'css/products.css'%}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
