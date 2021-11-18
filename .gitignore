@@ -1,0 +1,4 @@
+/.idea
+db.sqlite3
+/mainapp/__pycache__
+
