@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
 
@@ -15,8 +16,8 @@ def products(request):
     product = Product.objects.all()
     context = {
         'title': 'geekshop - Каталог',
-        'product': product
-
+        'product': product,
     }
     return render(request, 'mainapp/products.html', context)
+
 
