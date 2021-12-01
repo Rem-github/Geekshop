@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=128, verbose_name='Название')
@@ -6,6 +8,8 @@ class ProductCategory(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
     class Meta:
         verbose_name = "Категории"
         verbose_name_plural = "Категории"
