@@ -13,11 +13,17 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 def products(request):
-    product = Product.objects.all()
+    products = Product.objects.all()
     context = {
         'title': 'geekshop - Каталог',
-        'product': product,
+        'products': products,
     }
     return render(request, 'mainapp/products.html', context)
 
-
+def product(request, id):
+    product = Product.objects.get(id=id)
+    context = {
+        'title': product.name,
+        'product': product,
+    }
+    return render(request, 'mainapp/product.html', context)
