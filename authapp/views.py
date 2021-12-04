@@ -57,8 +57,8 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Данные успешно обновлены!")
-        #else:
-        #    messages.error(request, "Проверьте правильность ввода")
+        else:
+            messages.error(request, "Проверьте правильность ввода")
     else:
         form = UserProfileForm(instance=request.user)
     context = {
