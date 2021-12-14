@@ -2,8 +2,13 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 
+from admins.forms import UserAdminProfileForm
+from authapp.forms import UserProfileForm
 from baskets.models import Basket
+from mainapp.mixin import BaseClassContentMixin, CustomDispatchMixin
 from mainapp.models import Product
 
 
@@ -41,6 +46,13 @@ def basket_add(request, id):
     }
     result = render_to_string('mainapp/includes/card.html', context)
     return JsonResponse({'result': result})
+
+
+# class BasketDeleteView(DeleteView):
+#     model = Basket
+#     template_name = ''
+#     form_class = UserProfileForm
+#     success_url = reverse_lazy('authapp:profile')
 
 
 @login_required

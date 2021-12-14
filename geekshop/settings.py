@@ -136,3 +136,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'authapp.User'
 LOGIN_URL = '/users/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+DOMAIN_NAME = 'http://localhost:8000'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = True if os.getenv('EMAIL_USE_SSL') == 'True' else False
+
+EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = None, None

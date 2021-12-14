@@ -4,14 +4,19 @@ from django.shortcuts import render, get_object_or_404
 
 
 # Create your views here.
+from django.views.generic import DetailView, TemplateView
+
+from mainapp.mixin import BaseClassContentMixin
 from mainapp.models import Product, ProductCategory
 
+class IndexTemplateView(TemplateView):
+    template_name = 'mainapp/index.html'
 
-def index(request):
-    context = {
-        'title': 'geekshop',
-    }
-    return render(request, 'mainapp/index.html', context)
+# def index(request):
+#     context = {
+#         'title': 'geekshop',
+#     }
+#     return render(request, 'mainapp/index.html', context)
 
 def products(request, id_category=None, page=1):
 
@@ -38,10 +43,8 @@ def products(request, id_category=None, page=1):
 
     return render(request, 'mainapp/products.html', context)
 
-def product(request, id):
-    product = Product.objects.get(id=id)
-    context = {
-        'title': product.name,
-        'product': product,
-    }
-    return render(request, 'mainapp/product.html', context)
+
+class ProductDetailView(DetailView, BaseClassContentMixin):
+    model = Product
+    template_name = 'mainapp/product.html'
+    title = 'geekshop - Подробное описание'

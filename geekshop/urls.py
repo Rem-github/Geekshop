@@ -22,7 +22,7 @@ from mainapp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    path('', IndexTemplateView.as_view(), name='index'),
     path('products/', include('mainapp.urls', namespace='mainapp')),
     path('users/', include('authapp.urls', namespace='authapp')),
     path('baskets/', include('baskets.urls', namespace='baskets')),
