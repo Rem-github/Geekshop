@@ -13,12 +13,12 @@
                 <li class="list-group-item bg-light">
                     <div class="row text-center">
                         <div class="col-lg-4">
-                            <input name="{{ basket.id }}" type="number" class="form-control"
+                            <input name="{{ basket.pk }}" type="number" class="form-control"
                                    value="{{ basket.quantity }}" min="1">
                         </div>
                         <div class="col-lg-4">{{ basket.sum_price }} руб.</div>
                         <div class="col-lg-4">
-                            <a href="{% url 'baskets:basket_remove' basket.id %}">
+                            <a href="{% url 'baskets:basket_remove' basket.pk %}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>
