@@ -1,0 +1,14 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JTQu9GPINCw0LrRgtC40LLQsNGG0LjQuCDRg9GH0LXRgtC90L7QuSDQt9Cw0L8=?=
+ =?utf-8?b?0LjRgdC4IHFheiDQv9GA0L7QudC00LjRgtC1INC/0L4g0YHRgdGL0LvQutC1?=
+From: django@mail.ru
+To: qaz@mail.ru
+Date: Wed, 15 Dec 2021 06:09:50 -0000
+Message-ID: <163954859015.10852.16744299576473101287@i7-6700>
+
+Для подтверждения учетной записи qaz на портале 
+ http://localhost:8000/users/verify/qaz@mail.ru/3e5ef99747a42016e61455d8965afb2f515f3dce
+-------------------------------------------------------------------------------
