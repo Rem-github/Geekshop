@@ -38,13 +38,13 @@ class UserRegisterForm(UserCreationForm):
             field.widget.attrs['class'] = 'form-control py-4'
 
 
-    # def save(self, commit=True):
-    #     user=super(UserRegisterForm, self).save()
-    #     user.is_active=False
-    #     salt=hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
-    #     user.activation_key=hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
-    #     user.save()
-    #     return user
+    def save(self, commit=True):
+        user=super(UserRegisterForm, self).save()
+        user.is_active=False
+        salt=hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
+        user.activation_key=hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
+        user.save()
+        return user
 
 
 class UserProfileForm(UserChangeForm):
