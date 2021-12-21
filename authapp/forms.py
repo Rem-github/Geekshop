@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.core.exceptions import ValidationError
 
-from authapp.models import User
+from authapp.models import User, UserProfile
 
 
 class UserLoginForm(AuthenticationForm):
@@ -37,12 +37,11 @@ class UserRegisterForm(UserCreationForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control py-4'
 
-
     def save(self, commit=True):
-        user=super(UserRegisterForm, self).save()
-        user.is_active=False
-        salt=hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
-        user.activation_key=hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
+        user = super(UserRegisterForm, self).save()
+        user.is_active = False
+        salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
+        user.activation_key = hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
         user.save()
         return user
 
@@ -63,8 +62,6 @@ class UserProfileForm(UserChangeForm):
             field.widget.attrs['class'] = 'form-control py-4'
         self.fields['image'].widget.attrs['class'] = 'custom-file-input'
 
-
-
     def clean_age(self):
         data = self.cleaned_data['age']
         if data < 5:
@@ -77,10 +74,23 @@ class UserProfileForm(UserChangeForm):
             raise ValidationError('Не корректное имя')
         return data
 
-    def clean_image(self):
-        data = self.cleaned_data['image']
-        if data:
-            if data.size > 2000000:
-                raise ValidationError('Не корректный размер фото')
-        return data
+    # def clean_image(self):
+    #     data = self.cleaned_data['image']
+    #     if data:
+    #         if data.size > 2000000:
+    #             raise ValidationError('Не корректный размер фото')
+    #     return data
 
+
+class UserProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        exclude = ('user',)  # исключаем поле user
+
+    def __init__(self, *args, **kwargs):
+        super(UserProfileEditForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if field_name != 'gender':
+                field.widget.attrs['class'] = 'form-control py-4'
+            else:
+                field.widget.attrs['class'] = 'form-control'
