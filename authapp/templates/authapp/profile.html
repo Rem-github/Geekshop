@@ -32,7 +32,7 @@
 
                 <div class="col-lg-12 text-center">
                     <img width="100" height="100"
-                         src="{% if user.image %} {{ user.image.url }}{% else %}{% static 'vendor/img/users/default_avatar.jpg' %}{% endif %}"
+                         src="{% if user.image and not backends.associated %} {{ user.image.url }}{% elif user.image and backends.associated %}{{ user.image }} {% else %}{% static 'vendor/img/users/default_avatar.jpg' %}{% endif %}"
                          class="img-thumbnail">
                 </div>
                 <form action="{%  url 'authapp:profile' %}" method="post" enctype="multipart/form-data">
@@ -74,6 +74,20 @@
                         <div class="col-lg-6">
                             <label class="small mb-1" for="{{ form.age.id_for_label }}">Возраст</label>
                             {{ form.age }}
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="small mb-1" for="{{ profile.gender.id_for_label }}">Пол</label>
+                            {{ profile.gender }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-6">
+                            <label class="small mb-1" for="{{ profile.about.id_for_label }}">О себе</label>
+                            {{ profile.about }}
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="small mb-1" for="{{ profile.language.id_for_label }}">Язык</label>
+                            {{ profile.language }}
                         </div>
                     </div>
                     <div class="form-row">

@@ -4,13 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
 from django.views.generic import FormView, CreateView, UpdateView
 
-from authapp.forms import UserLoginForm, UserRegisterForm, UserProfileForm
+from authapp.forms import UserLoginForm, UserRegisterForm, UserProfileForm, UserProfileEditForm
 from authapp.models import User
 from baskets.models import Basket
 
@@ -123,6 +123,13 @@ class ProfileFormView(UpdateView, BaseClassContentMixin, UserDispatchMixin):
     success_url = reverse_lazy('authapp:profile')
     title = "Geekshop | Профайл"
 
+    def post(self, request, *args, **kwargs):
+        form = UserProfileForm(data=request.POST, files=request.FILES, instance=request.user)
+        profile_form = UserProfileEditForm(request.POST, instance=request.user.userprofile)
+        if form.is_valid() and profile_form.is_valid():
+            form.save()
+        return redirect(self.success_url)
+
     def form_valid(self, form):
         messages.success(self.request, 'Данные успешно изменены')
         super().form_valid(form)
@@ -131,10 +138,10 @@ class ProfileFormView(UpdateView, BaseClassContentMixin, UserDispatchMixin):
     def get_object(self, *args, **kwargs):
         return get_object_or_404(User, pk=self.request.user.pk)
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(ProfileFormView, self).get_context_data(**kwargs)
-    #     context['baskets'] = Basket.objects.filter(user=self.request.user)
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super(ProfileFormView, self).get_context_data(**kwargs)
+        context['profile'] = UserProfileEditForm(instance=self.request.user.userprofile)
+        return context
 
 
 # def logout(request):
