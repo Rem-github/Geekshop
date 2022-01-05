@@ -78,23 +78,31 @@ window.onload = function (){
 
     $('.order_form').on('change','select', function(){
         let target=event.target;
-        $.ajax({
+        orderitem_num = parseInt(target.name.replace('orderitems-','').replace('-product',''));
+        let orderitem_product_pk = target.options[target.selectedIndex].value;
 
-            url:"/ordersapp/update/" + target.pk + "/",
-            success: function(data){
+        console.log(orderitem_num);
+        console.log(orderitem_product_pk);
 
-                $('.order_form').html(data.result)
-            }
+        if(orderitem_product_pk){
+            $.ajax({
 
-        });
-        event.preventDefault()
-        // orderitem_num = parseInt(target.name.replace('orderitems-','').replace('-product',''));
-        // orderitem_quantity_name = "orderitems-" + orderitem_num + "-quantity";
-        //
-        // $('input[name=' + orderitem_quantity_name + ']').val('1');
-        // $('.orderitems-' + orderitem_num + '-price').html('цена из базы');
-        // // quantity_arr[orderitem_num] = orderitem_quantity;
-        // // orderSummaryUpdate(price_arr[orderitem_num], delta_quantity);
+                url: "/orders/product/" + orderitem_product_pk + "/price/",
+                success: function (data) {
+                    if(data.price){
+                        price_arr[orderitem_num]= parseFloat(data.price)
+                        if(isNaN(quantity_arr[orderitem_num])) {
+                            quantity_arr[orderitem_num] = 0;
+                        }
+                        let price_html ='<span class="orderitems-'+ orderitem_num + '-price">'
+                            + data.price.toString().replace('.',',')
+                        '</span> руб'
+                        let current_tr =  $('.order_form table').find('tr:eq('+(orderitem_num+1)+')');
+                        current_tr.find('td:eq(2)').html(price_html)
+                    }
+                }
+            })
+        }
     });
 
 }
