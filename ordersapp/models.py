@@ -48,7 +48,7 @@ class Order(models.Model):
             item.product.quantity += item.quantity
             item.save()
         self.is_active = False
-        self.save
+        self.save()
 
 
 class OrderItem(models.Model):
