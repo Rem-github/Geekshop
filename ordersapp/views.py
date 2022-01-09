@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect, JsonResponse
@@ -5,6 +6,7 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from baskets.models import Basket
@@ -21,11 +23,19 @@ class OrderList(ListView, BaseClassContentMixin):
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user, is_active=True)
 
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(ListView, self).dispatch(*args, **kwargs)
+
 class OrderCreate(CreateView, BaseClassContentMixin):
     model = Order
     fields = []
     success_url = reverse_lazy('orders:list')
     title = 'GeekShop | Создание заказа'
+
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(OrderCreate, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(OrderCreate, self).get_context_data(**kwargs)
@@ -98,6 +108,10 @@ class OrderUpdate(UpdateView, BaseClassContentMixin):
                 self.object.delete()
         return super(OrderUpdate, self).form_valid(form)
 
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(OrderUpdate, self).dispatch(*args, **kwargs)
+
 class OrderDelete(DeleteView, BaseClassContentMixin):
     model = Order
     success_url = reverse_lazy('orders:list')
@@ -107,6 +121,10 @@ class OrderDelete(DeleteView, BaseClassContentMixin):
 class OrderDetail(DetailView, BaseClassContentMixin):
     model = Order
     title = 'GeekShop | Просмотр заказа'
+
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(OrderDetail, self).dispatch(*args, **kwargs)
 
 
 # class HttpResponseRedirect:
