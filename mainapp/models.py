@@ -5,6 +5,7 @@ from django.urls import reverse
 class ProductCategory(models.Model):
     name = models.CharField(max_length=128, verbose_name='Название')
     description = models.TextField(blank=True, null=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     def __str__(self):
         return f'{self.name}'
