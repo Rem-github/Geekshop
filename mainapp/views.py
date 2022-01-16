@@ -22,6 +22,28 @@ def get_link_category():
     else:
         return ProductCategory.objects.all()
 
+def get_link_product():
+    if settings.LOW_CACHE:
+        key = 'link_product'
+        link_product = cache.get(key)
+        if link_product is None:
+            link_product = Product.objects.all().select_related('category')
+            cache.set(key, link_product)
+        return link_product
+    else:
+        return Product.objects.all().select_related('category')
+
+def get_product(pk):
+    if settings.LOW_CACHE:
+        key = f'product{pk}'
+        product = cache.get(key)
+        if product is None:
+            product = Product.objects.get(id=pk)
+            cache.set(key, product)
+        return product
+    else:
+        return Product.objects.get(id=pk)
+
 class IndexTemplateView(TemplateView):
     template_name = 'mainapp/index.html'
 
@@ -41,6 +63,8 @@ def products(request, id_category=None, page=1):
         products=Product.objects.filter(category_id=id_category)
     else:
         products = Product.objects.all()
+
+    products = get_link_product()
 
     paginator=Paginator(products, per_page=3)
 
@@ -62,3 +86,8 @@ class ProductDetailView(DetailView, BaseClassContentMixin):
     model = Product
     template_name = 'mainapp/product.html'
     title = 'geekshop - Подробное описание'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['product'] = get_product(self.kwargs.get('pk'))
+        return context
