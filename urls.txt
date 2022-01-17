@@ -1,0 +1,102 @@
+89.108.64.90/	mainapp.views.IndexTemplateView	index
+89.108.64.90/__debug__/render_panel/	debug_toolbar.views.render_panel	djdt:render_panel
+89.108.64.90/__debug__/sql_explain/	debug_toolbar.panels.sql.views.sql_explain	djdt:sql_explain
+89.108.64.90/__debug__/sql_profile/	debug_toolbar.panels.sql.views.sql_profile	djdt:sql_profile
+89.108.64.90/__debug__/sql_select/	debug_toolbar.panels.sql.views.sql_select	djdt:sql_select
+89.108.64.90/__debug__/template_source/	debug_toolbar.panels.templates.views.template_source	djdt:template_source
+89.108.64.90/admin/	django.contrib.admin.sites.index	admin:index
+89.108.64.90/admin/<app_label>/	django.contrib.admin.sites.app_index	admin:app_list
+89.108.64.90/admin/<url>	django.contrib.admin.sites.catch_all_view
+89.108.64.90/admin/auth/group/	django.contrib.admin.options.changelist_view	admin:auth_group_changelist
+89.108.64.90/admin/auth/group/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/auth/group/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:auth_group_change
+89.108.64.90/admin/auth/group/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:auth_group_delete
+89.108.64.90/admin/auth/group/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:auth_group_history
+89.108.64.90/admin/auth/group/add/	django.contrib.admin.options.add_view	admin:auth_group_add
+89.108.64.90/admin/authapp/user/	django.contrib.admin.options.changelist_view	admin:authapp_user_changelist
+89.108.64.90/admin/authapp/user/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/authapp/user/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:authapp_user_change
+89.108.64.90/admin/authapp/user/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:authapp_user_delete
+89.108.64.90/admin/authapp/user/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:authapp_user_history
+89.108.64.90/admin/authapp/user/add/	django.contrib.admin.options.add_view	admin:authapp_user_add
+89.108.64.90/admin/autocomplete/	django.contrib.admin.sites.autocomplete_view	admin:autocomplete
+89.108.64.90/admin/baskets/basket/	django.contrib.admin.options.changelist_view	admin:baskets_basket_changelist
+89.108.64.90/admin/baskets/basket/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/baskets/basket/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:baskets_basket_change
+89.108.64.90/admin/baskets/basket/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:baskets_basket_delete
+89.108.64.90/admin/baskets/basket/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:baskets_basket_history
+89.108.64.90/admin/baskets/basket/add/	django.contrib.admin.options.add_view	admin:baskets_basket_add
+89.108.64.90/admin/jsi18n/	django.contrib.admin.sites.i18n_javascript	admin:jsi18n
+89.108.64.90/admin/login/	django.contrib.admin.sites.login	admin:login
+89.108.64.90/admin/logout/	django.contrib.admin.sites.logout	admin:logout
+89.108.64.90/admin/mainapp/product/	django.contrib.admin.options.changelist_view	admin:mainapp_product_changelist
+89.108.64.90/admin/mainapp/product/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/mainapp/product/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:mainapp_product_change
+89.108.64.90/admin/mainapp/product/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:mainapp_product_delete
+89.108.64.90/admin/mainapp/product/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:mainapp_product_history
+89.108.64.90/admin/mainapp/product/add/	django.contrib.admin.options.add_view	admin:mainapp_product_add
+89.108.64.90/admin/mainapp/productcategory/	django.contrib.admin.options.changelist_view	admin:mainapp_productcategory_changelist
+89.108.64.90/admin/mainapp/productcategory/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/mainapp/productcategory/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:mainapp_productcategory_change
+89.108.64.90/admin/mainapp/productcategory/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:mainapp_productcategory_delete
+89.108.64.90/admin/mainapp/productcategory/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:mainapp_productcategory_history
+89.108.64.90/admin/mainapp/productcategory/add/	django.contrib.admin.options.add_view	admin:mainapp_productcategory_add
+89.108.64.90/admin/password_change/	django.contrib.admin.sites.password_change	admin:password_change
+89.108.64.90/admin/password_change/done/	django.contrib.admin.sites.password_change_done	admin:password_change_done
+89.108.64.90/admin/r/<int:content_type_id>/<path:object_id>/	django.contrib.contenttypes.views.shortcut	admin:view_on_site
+89.108.64.90/admin/social_django/association/	django.contrib.admin.options.changelist_view	admin:social_django_association_changelist
+89.108.64.90/admin/social_django/association/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/social_django/association/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:social_django_association_change
+89.108.64.90/admin/social_django/association/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:social_django_association_delete
+89.108.64.90/admin/social_django/association/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:social_django_association_history
+89.108.64.90/admin/social_django/association/add/	django.contrib.admin.options.add_view	admin:social_django_association_add
+89.108.64.90/admin/social_django/nonce/	django.contrib.admin.options.changelist_view	admin:social_django_nonce_changelist
+89.108.64.90/admin/social_django/nonce/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/social_django/nonce/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:social_django_nonce_change
+89.108.64.90/admin/social_django/nonce/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:social_django_nonce_delete
+89.108.64.90/admin/social_django/nonce/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:social_django_nonce_history
+89.108.64.90/admin/social_django/nonce/add/	django.contrib.admin.options.add_view	admin:social_django_nonce_add
+89.108.64.90/admin/social_django/usersocialauth/	django.contrib.admin.options.changelist_view	admin:social_django_usersocialauth_changelist
+89.108.64.90/admin/social_django/usersocialauth/<path:object_id>/	django.views.generic.base.RedirectView
+89.108.64.90/admin/social_django/usersocialauth/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:social_django_usersocialauth_change
+89.108.64.90/admin/social_django/usersocialauth/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:social_django_usersocialauth_delete
+89.108.64.90/admin/social_django/usersocialauth/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:social_django_usersocialauth_history
+89.108.64.90/admin/social_django/usersocialauth/add/	django.contrib.admin.options.add_view	admin:social_django_usersocialauth_add
+89.108.64.90/admins/	admins.views.IndexTemplateView	admins:index
+89.108.64.90/admins/category-create/	admins.views.ProductCategoryCreateView	admins:admin_category_create
+89.108.64.90/admins/category-delete/<int:pk>	admins.views.ProductCategoryDeleteView	admins:admin_category_delete
+89.108.64.90/admins/category-update/<int:pk>	admins.views.ProductCategoryUpdateView	admins:admin_category_update
+89.108.64.90/admins/category/	admins.views.ProductCategoryListView	admins:admin_category
+89.108.64.90/admins/product-delete/<int:pk>	admins.views.ProductDeleteView	admins:admin_products_delete
+89.108.64.90/admins/product-update/<int:pk>	admins.views.ProductUpdateView	admins:admin_products_update
+89.108.64.90/admins/products-create/	admins.views.ProductCreateView	admins:admin_products_create
+89.108.64.90/admins/products/	admins.views.ProductListView	admins:admin_products
+89.108.64.90/admins/users-create/	admins.views.UserCreateView	admins:admin_users_create
+89.108.64.90/admins/users-delete/<int:pk>	admins.views.UserDeleteView	admins:admin_users_delete
+89.108.64.90/admins/users-update/<int:pk>	admins.views.UserUpdateView	admins:admin_users_update
+89.108.64.90/admins/users/	admins.views.UserListView	admins:admin_users
+89.108.64.90/baskets/add/<int:id>/	baskets.views.basket_add	baskets:basket_add
+89.108.64.90/baskets/edit/<int:basket_id>/<int:quantity>/	baskets.views.basket_edit	baskets:basket_edit
+89.108.64.90/baskets/remove/<int:basket_id>/	baskets.views.basket_remove	baskets:basket_remove
+89.108.64.90/complete/<str:backend>/	social_django.views.complete	social:complete
+89.108.64.90/disconnect/<str:backend>/	social_django.views.disconnect	social:disconnect
+89.108.64.90/disconnect/<str:backend>/<int:association_id>/	social_django.views.disconnect	social:disconnect_individual
+89.108.64.90/login/<str:backend>/	social_django.views.auth	social:begin
+89.108.64.90/media/<path>	django.views.static.serve
+89.108.64.90/orders/	ordersapp.views.OrderList	orders:list
+89.108.64.90/orders/create/	ordersapp.views.OrderCreate	orders:create
+89.108.64.90/orders/delete/<int:pk>	ordersapp.views.OrderDelete	orders:delete
+89.108.64.90/orders/forming_complete/<int:pk>	ordersapp.views.order_forming_complete	orders:forming_complete
+89.108.64.90/orders/product/<int:pk>/price/	ordersapp.views.get_product_price	orders:product_price
+89.108.64.90/orders/read/<int:pk>	ordersapp.views.OrderDetail	orders:read
+89.108.64.90/orders/update/<int:pk>	ordersapp.views.OrderUpdate	orders:update
+89.108.64.90/products/	mainapp.views.IndexTemplateView	mainapp:index
+89.108.64.90/products/category/<int:id_category>/	mainapp.views.products	mainapp:category
+89.108.64.90/products/page/<int:page>/	mainapp.views.products	mainapp:page
+89.108.64.90/products/product/<int:pk>/	mainapp.views.ProductDetailView	mainapp:product
+89.108.64.90/products/products	mainapp.views.products	mainapp:products
+89.108.64.90/users/login/	authapp.views.UserLoginView	authapp:login
+89.108.64.90/users/logout/	authapp.views.UserLogoutView	authapp:logout
+89.108.64.90/users/profile/	authapp.views.ProfileFormView	authapp:profile
+89.108.64.90/users/register/	authapp.views.UserCreateView	authapp:register
+89.108.64.90/users/verify/<str:email>/<str:activate_key>	authapp.views.verify	authapp:verify
