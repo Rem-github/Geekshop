@@ -1,3 +1,4 @@
+
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
@@ -63,11 +64,11 @@ def products(request, id_category=None, page=1):
     }
 
     if id_category:
-        products=Product.objects.filter(category_id=id_category)
+        products=Product.objects.filter(category_id=id_category, is_active=True)
     else:
-        products = Product.objects.all()
+        products = Product.objects.filter(is_active=True)
 
-    products = get_link_product()
+    #products = get_link_product() # кэширование
 
     paginator=Paginator(products, per_page=3)
 

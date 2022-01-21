@@ -39,6 +39,10 @@ class UserLoginView(LoginView, BaseClassContentMixin):
     form_class = UserLoginForm
     title = "Geekshop | Авторизация"
 
+    # def get(self, request, *args, **kwargs):
+    #     if request.user.is_authenticated:
+    #         return HttpResponseRedirect(reverse('mainapp:index'))
+    #     return HttpResponseRedirect(reverse('authapp:login'))
 
 # def register(request):
 #
