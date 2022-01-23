@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import user_passes_test
+from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -80,12 +81,32 @@ class ProductCategoryUpdateView(UpdateView, BaseClassContentMixin, CustomDispatc
     success_url = reverse_lazy('admins:admin_category')
     title = "Geekshop Админ | Обновление"
 
+    def form_valid(self, form):
+        if 'discount' in form.cleaned_data:
+            discount = form.cleaned_data['discount']
+            if discount:
+                self.object.product_set.update(price=F('price') * (1 - discount / 100))
+        return HttpResponseRedirect(self.get_success_url())
+
+
+
 
 class ProductCategoryDeleteView(DeleteView, BaseClassContentMixin, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-users-update-delete.html'
     form_class = CategoryAdminCreateForm
     success_url = reverse_lazy('admins:admin_category')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.is_active:
+            self.object.product_set.update(is_active=False)  # обращаемся к связанным продуктам
+            self.object.is_active = False
+        else:
+            self.object.product_set.update(is_active=True)
+            self.object.is_active = True
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class ProductListView(ListView, BaseClassContentMixin, CustomDispatchMixin):
@@ -112,8 +133,20 @@ class ProductUpdateView(UpdateView, BaseClassContentMixin, CustomDispatchMixin):
     title = "Geekshop Админ | Обновление"
 
 
+
 class ProductDeleteView(DeleteView, BaseClassContentMixin, CustomDispatchMixin):
     model = Product
     template_name = 'admins/admin-products-update-delete.html'
     form_class = ProductAdminCreateForm
     success_url = reverse_lazy('admins:admin_products')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.is_active:
+            self.object.is_active = False
+        else:
+            self.object.is_active = True
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+

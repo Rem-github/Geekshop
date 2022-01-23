@@ -17,6 +17,8 @@
                                 <tr>
                                     <th>Название категории</th>
                                     <th>Описание</th>
+                                    <th>Активность</th>
+                                    <th>Действие</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -25,6 +27,25 @@
                                         <td><a href="{% url 'admins:admin_category_update'  category.id %}"
                                                style="color: dodgerblue">{{ category.name }}</a></td>
                                         <td>{{ category.description }}</td>
+                                        <td class="text-center">
+                                            {% if category.is_active %}
+                                                <i class="fas fa-check-circle"></i>
+                                            {% else %}
+                                                <i class="fas fa-times-circle"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                        <form action="{% url 'admins:admin_category_delete' category.id %}" method="post">
+                                            {% csrf_token %}
+                                            {% if category.is_active %}
+                                                <input class="btn btn-danger btn-block" type="submit"
+                                                       value="Заблокировать">
+                                            {% else %}
+                                                <input class="btn btn-info btn-block" type="submit"
+                                                       value="Активировать">
+                                            {% endif %}
+                                        </form>
+                                        </td>
                                     </tr>
 
                                     </tbody>
